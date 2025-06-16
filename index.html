@@ -478,8 +478,8 @@
         () => {
           const wb = XLSX.utils.book_new();
           const ws = XLSX.utils.json_to_sheet(WINNERS_LIST);
-          XLSX.utils.book_append_sheet(wb, ws, "2024年会中奖名单");
-          XLSX.writeFile(wb, `2024年会中奖名单_${(new Date()).toLocaleDateString().replaceAll('/', '-')}.xlsx`);
+          XLSX.utils.book_append_sheet(wb, ws, "2025年节目名单");
+          XLSX.writeFile(wb, `2025年节目名单_${(new Date()).toLocaleDateString().replaceAll('/', '-')}.xlsx`);
         },
         false
       );
@@ -1044,11 +1044,11 @@
               LOTTERY_DATA.users[_index + 5],
             ];
             const element = objects[ind].element;
-            // 更新element的内容
-            element.querySelector(".username").textContent = userData[0];
-            element.querySelector(".emailprefix").textContent = userData[1];
-            element.querySelector(".wkno").textContent = userData[2];
-            element.querySelector(".performance").textContent = userData[3];
+            // 更新element的内容，这里也要根据对应的位置来
+            element.querySelector(".username").textContent = userData[3];
+            element.querySelector(".emailprefix").textContent = userData[0];
+            element.querySelector(".wkno").textContent = userData[1];
+            // element.querySelector(".performance").textContent = userData[3];
             // ... 更新其他需要的DOM元素
             // 更新元素内容的同时，添加高亮动画
             element.classList.add("highlight");
