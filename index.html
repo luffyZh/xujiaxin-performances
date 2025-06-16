@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" href="/assets/imgs/icon.png" />
+    <title>节目抽奖程序</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/animate.css" />
+  </head>
+  <body>
+    <section class="audio-container">
+      <div class="music-icon">
+        <svg t="1706071834526" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9720" width="64" height="64"><path d="M511.78 64.22C264.6 64.22 64.22 264.6 64.22 511.78S264.6 959.33 511.78 959.33 959.33 759 959.33 511.78 759 64.22 511.78 64.22zM685.12 417.7a19.09 19.09 0 0 1-27 0.26L546.83 308.8v374.26a23.68 23.68 0 0 1-0.59 5.23 106.83 106.83 0 1 1-57.33-105V267.43a29 29 0 0 1 29-29 28.81 28.81 0 0 1 17.51 5.9c0.33 0.24 0.64 0.49 1 0.75a29.64 29.64 0 0 1 2.64 2.49l145.8 143.13a19.09 19.09 0 0 1 0.26 27z" fill="#FF716E" p-id="9721"></path><path d="M190.56 659.43a465.63 465.63 0 0 0 48.2 207 445.59 445.59 0 0 0 273 92.9C759 959.33 959.33 759 959.33 511.78a445.62 445.62 0 0 0-90.62-270 465.81 465.81 0 0 0-210.5-49.95c-258.28-0.05-467.65 209.33-467.65 467.6zM685.12 417.7a19.09 19.09 0 0 1-27 0.26L546.83 308.8v374.26a23.68 23.68 0 0 1-0.59 5.23 106.83 106.83 0 1 1-57.33-105V267.43a29 29 0 0 1 29-29 28.81 28.81 0 0 1 17.51 5.9c0.33 0.24 0.64 0.49 1 0.75a29.64 29.64 0 0 1 2.64 2.49l145.8 143.13a19.09 19.09 0 0 1 0.26 27z" fill="#FF5C64" p-id="9722"></path><path d="M690.21 400.58a19.07 19.07 0 0 1-5.09 17.12 19.09 19.09 0 0 1-27 0.26l-6.55-6.42a430 430 0 0 0-104.74 51.89v219.63a23.68 23.68 0 0 1-0.59 5.23 106.87 106.87 0 0 1-183.58 63.84 435 435 0 0 0 10.49 185.32 447.36 447.36 0 0 0 138.63 21.88C759 959.33 959.33 759 959.33 511.78a449 449 0 0 0-9.33-91.41 433.8 433.8 0 0 0-259.77-19.79z" fill="#FC4956" p-id="9723"></path><path d="M439.85 571.34a106.34 106.34 0 0 1 49.06 11.91v-72.77a434.44 434.44 0 0 0-52.34 60.91c1.09-0.03 2.18-0.05 3.28-0.05z" fill="#FC4956" p-id="9724"></path><path d="M944.61 626a341.46 341.46 0 0 0-78.72-9.16c-188 0-340.39 152.4-340.39 340.39v1.86C727.14 953 895.22 813.62 944.61 626z" fill="#F23D4F" p-id="9725"></path><path d="M397.49 169.86c7.56 11.34-32.19 25.35-74.11 53.29s-70.16 59.22-77.72 47.85 15.63-50.21 57.55-78.15 86.72-34.33 94.28-22.99z" fill="#FFFFFF" p-id="9726"></path></svg>
+      </div>
+      <audio id="bg-music" controls src="./assets/audios/bg-music.wav" loop></audio>
+      <audio id="dingdingding" controls src="./assets/audios/dingdingding.mp3"></audio>
+    </section>
+    <h1 class="title">宽邦小学节目抽奖</h1>
+    <!-- 大幕 -->
+    <section id="curtain">
+      <div id="curtain-top" class="curtain"></div>
+      <div id="curtain-bottom" class="curtain"></div>
+
+      <!-- 中奖卡片容器 -->
+      <div id="winners-container">
+        <div id="close-winner-list">
+          <svg
+            t="1705913660137"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="1446"
+            width="32"
+            height="32"
+          >
+            <path
+              d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z"
+              fill="#F55300"
+              p-id="1447"
+            ></path>
+            <path
+              d="M258.56 358.912l434.432 434.432a51.2 51.2 0 0 0 72.3968-72.3968L546.83 308.8v374.26a23.68 23.68 0 0 1-0.59 5.23 106.83 106.83 0 0 1-57.33-105V267.43a29 29 0 0 1 29-29 28.81 28.81 0 0 1 17.51 5.9c0.33 0.24 0.64 0.49 1 0.75a29.64 29.64 0 0 1 2.64 2.49l145.8 143.13a19.09 19.09 0 0 1 0.26 27z"
+              fill="#F9F9F9"
+              p-id="1448"
+            ></path>
+            <path
+              d="M258.56 712.192l434.432-434.432a51.2 51.2 0 0 1 72.448 72.3968l-434.4832 434.432A51.2 51.2 0 1 1 258.56 712.192z"
+              fill="#F9F9F9"
+              p-id="1449"
+            ></path>
+          </svg>
+        </div>
+        <div id="winner-list"></div>
+      </div>
+    </section>
+    <canvas id="canvas"></canvas>
+    <div id="container">
+      <!-- 选中菜单结构 start-->
+      <div id="menu">
+        <button id="lottery">开始抽奖</button>
+      </div>
+      <!-- end -->
+    </div>
+    <section id="prize-panel" style="display: none" class="shine">
+      <span class="line-1"></span>
+      <span class="line-2"></span>
+      <span class="line-3"></span>
+      <span class="line-4"></span>
+      <img id="prize-img" class="prize-img" src="" alt="prize" style="display: none" />
+      <div class="prize-info">
+        <div id="prize-name" class="prize-name"></div>
+        <div id="prize-count" class="prize-count"></div>
+        <div id="prize-stage" class="prize-stage"></div>
+      </div>
+    </section>
+    <section id="show-prize-panel" style="display: none">
+      <svg
+        t="1705996547396"
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="3275"
+        id="mx_n_1705996547397"
+        width="48"
+        height="48"
+      >
+        <path
+          d="M996.730961 0a25.688693 25.688693 0 0 1 25.704819 25.704819v971.130961a25.688693 25.688693 0 0 1-25.704819 25.704818H528.609764a25.688693 25.688693 0 0 1-25.704819-25.704818 25.688693 25.688693 0 0 1 25.704819-25.704819h442.819527V51.2H51.52252v439.900724c0 14.005417-11.707465 25.495181-25.704819 25.495182a25.462929 25.462929 0 0 1-25.495181-25.495182V25.495181C0.314457 11.497827 11.602646 0 25.801575 0h970.921323zM0.104819 996.626142h0.209638v-355.900473c0-14.206992 11.288189-25.696756 25.495181-25.696756H381.702047a25.688693 25.688693 0 0 1 25.704819 25.704819v355.89241a25.688693 25.688693 0 0 1-25.704819 25.704819H25.6c-14.005417 0-25.495181-11.497827-25.495181-25.704819z m51.2-330.397229v304.902048h304.902047V666.228913H51.304819zM465.92 556.507717a25.479055 25.479055 0 0 1 0-36.154457l289.856504-289.646866H588.8a25.688693 25.688693 0 0 1-25.704819-25.704819 25.688693 25.688693 0 0 1 25.704819-25.704819h228.827717a25.688693 25.688693 0 0 1 25.712881 25.704819V433.627717a25.688693 25.688693 0 0 1-25.704818 25.704818 25.688693 25.688693 0 0 1-25.704819-25.704818V266.64315l-289.646867 289.864567a25.454866 25.454866 0 0 1-18.182047 7.522771c-6.692283 0-13.166866-2.507591-18.182047-7.522771z"
+          fill="#7FFFFF"
+          p-id="3276"
+        ></path>
+      </svg>
+    </section>
+    <section id="extra-panel" style="display: none" class="shine">
+      <span class="line-1"></span>
+      <span class="line-2"></span>
+      <span class="line-3"></span>
+      <span class="line-4"></span>
+      <div class="extra-info">
+        <div class="extra-item" id="reset-lottery">
+          <svg
+            t="1705998770475"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="5534"
+            id="mx_n_1705998770476"
+            width="48"
+            height="48"
+          >
+            <path
+              d="M0 446.56409h446.820074V0H0zM74.523342 74.523342h297.805387v297.517405H74.523342zM577.11593 1023.936004H1023.936004V577.371914H577.11593z m74.491345-372.040747h297.805387v297.517405h-297.805387z m210.482844-343.562528l-37.245672-40.669458-52.348728 48.63696 121.720392 130.263859 13.375165-12.511218 38.109618-35.83776 10.815324-10.23936L1023.936004 325.131679l-48.63696-52.348728-36.701706 33.27792-1.983876-5.695644-3.423786-10.23936C879.241047 140.631211 749.777139 30.750078 592.058996 5.727642l-2.463846-0.31998v75.099306a362.505343 362.505343 0 0 1 271.631023 225.361915l0.831948 2.463846zM161.845885 721.010937l37.245672 40.669458 52.348728-48.63696-120.888444-130.263859-13.375165 12.511218-38.973564 35.83776-10.815324 10.239361-67.419786 62.844072 48.63696 52.348728 36.701706-33.27792 1.983876 5.695644 3.423786 10.23936c53.948628 149.494657 183.412537 259.375789 341.13068 284.398225l2.463846 0.31998v-75.099306a362.505343 362.505343 0 0 1-271.631023-225.361915l-0.831948-2.463846z"
+              p-id="5535"
+              fill="#7fffff"
+            ></path>
+          </svg>
+          重置抽奖
+        </div>
+        <div class="extra-item" id="view-winners">
+          <svg t="1705998858890" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6866" width="48" height="48"><path d="M62.360791 138.133034l150.266375 0 0 150.192697-150.266375 0 0-150.192697Z" p-id="6867" fill="#7FFFFF"></path><path d="M362.820887 138.133034l596.895529 0 0 150.192697-596.895529 0 0-150.192697Z" p-id="6868" fill="#7FFFFF"></path><path d="M62.360791 438.08864l150.266375 0 0 150.193721-150.266375 0 0-150.193721Z" p-id="6869" fill="#7FFFFF"></path><path d="M362.820887 438.08864l596.895529 0 0 150.193721-596.895529 0 0-150.193721Z" p-id="6870" fill="#7FFFFF"></path><path d="M62.360791 735.7459l150.266375 0 0 150.192697-150.266375 0 0-150.192697Z" p-id="6871" fill="#7FFFFF"></path><path d="M362.820887 735.7459l596.895529 0 0 150.192697-596.895529 0 0-150.192697Z" p-id="6872" fill="#7FFFFF"></path></svg>
+          查看名单
+        </div>
+        <div class="extra-item" id="lucky-single">
+          <svg t="1706057282901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7215" width="48" height="48"><path d="M667.91424 742.4l-77.41952-52.02432L662.95808 281.6 353.28 396.18048l95.38048 8.05376 10.52672 289.23904-83.6096 35.3024z" fill="#7fffff" p-id="7216"></path></svg>
+          幸运单抽
+        </div>
+      </div>
+    </section>
+    <section id="show-extra-panel" style="display: none">
+      <svg
+        t="1705997969803"
+        class="icon"
+        viewBox="0 0 1024 1024"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="4385"
+        id="mx_n_1705997969804"
+        width="48"
+        height="48"
+      >
+        <path
+          d="M400.896 261.156571l20.041143-100.205714A18.285714 18.285714 0 0 1 438.857143 146.285714h146.285714a18.285714 18.285714 0 0 1 17.92 14.701715l20.041143 100.169142c17.846857 7.899429 34.779429 17.700571 50.541714 29.220572l96.804572-32.768a18.285714 18.285714 0 0 1 21.686857 8.192l73.142857 126.683428a18.285714 18.285714 0 0 1-3.766857 22.893715l-76.763429 67.474285a277.211429 277.211429 0 0 1 0 58.294858l76.8 67.474285a18.285714 18.285714 0 0 1 3.730286 22.893715l-73.142857 126.683428a18.285714 18.285714 0 0 1-21.686857 8.192l-96.804572-32.768c-15.762286 11.52-32.694857 21.321143-50.541714 29.220572l-20.041143 100.205714A18.285714 18.285714 0 0 1 585.142857 877.714286h-146.285714a18.285714 18.285714 0 0 1-17.92-14.701715l-20.041143-100.169142a273.993143 273.993143 0 0 1-50.541714-29.220572l-96.804572 32.768a18.285714 18.285714 0 0 1-21.686857-8.192l-73.142857-126.683428a18.285714 18.285714 0 0 1 3.766857-22.893715l76.763429-67.474285a277.211429 277.211429 0 0 1 0-58.294858l-76.8-67.474285a18.285714 18.285714 0 0 1-3.730286-22.893715l73.142857-126.683428a18.285714 18.285714 0 0 1 21.686857-8.192l96.804572 32.768c15.762286-11.52 32.694857-21.321143 50.541714-29.220572zM603.428571 512a91.428571 91.428571 0 1 0-182.857142 0 91.428571 91.428571 0 0 0 182.857142 0z m36.571429 0a128 128 0 1 1-256 0 128 128 0 0 1 256 0z m-205.165714-234.166857a18.285714 18.285714 0 0 1-11.117715 13.385143 237.421714 237.421714 0 0 0-58.697142 33.938285 18.285714 18.285714 0 0 1-17.188572 2.962286l-91.794286-31.085714-58.148571 100.754286 72.777143 63.963428a18.285714 18.285714 0 0 1 6.034286 16.310857 239.908571 239.908571 0 0 0 0 67.876572 18.285714 18.285714 0 0 1-6.034286 16.310857l-72.777143 63.963428L256 726.930286l91.794286-31.085715a18.285714 18.285714 0 0 1 17.188571 2.998858 237.421714 237.421714 0 0 0 58.697143 33.938285 18.285714 18.285714 0 0 1 11.154286 13.385143L453.851429 841.142857h116.297142l19.017143-94.976a18.285714 18.285714 0 0 1 11.117715-13.385143 237.421714 237.421714 0 0 0 58.697142-33.938285 18.285714 18.285714 0 0 1 17.188572-2.962286l91.794286 31.085714 58.148571-100.754286-72.777143-63.963428a18.285714 18.285714 0 0 1-6.034286-16.310857 239.908571 239.908571 0 0 0 0-67.876572 18.285714 18.285714 0 0 1 6.034286-16.310857l72.777143-63.963428L768 297.069714l-91.794286 31.085715a18.285714 18.285714 0 0 1-17.188571-2.998858 237.421714 237.421714 0 0 0-58.697143-33.938285 18.285714 18.285714 0 0 1-11.154286-13.385143L570.148571 182.857143h-116.297142l-19.017143 94.976z"
+          fill="#7FFFFF"
+          p-id="4386"
+        ></path>
+      </svg>
+    </section>
+    <!-- 中奖名单大幕 -->
+    <section id="winner-list-table__curtain">
+      <div id="winner-list-table__curtain-top" class="winner-list-table_curtain"></div>
+      <div id="winner-list-table__curtain-bottom" class="winner-list-table_curtain"></div>
+
+      <!-- 中奖名单表格 -->
+      <div class="winner-table-container">
+        <table class="winner-table">
+          <thead>
+            <tr>
+              <th width="10%">序号</th>
+              <th width="20%">班级</th>
+              <th width="30%">姓名</th>
+              <th width="40%">节目名称</th>
+            </tr>
+          </thead>
+          <tbody id="winner-table_body"></tbody>
+        </table>
+        <div class="winner-table-actions">
+          <div class="item" id="export-winner-list">导出名单</div>
+          <div class="item" id="close-winner-table">关闭</div>
+        </div>
+      </div>
+    </section>
+    <script src="./js/star-bg.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/xlsx.min.js"></script>
+    <script src="./js/prizes.js"></script>
+    <script>
+      // 每个用户数据占据的元素数量
+      // 每个用户包含：[姓名, 工号, 序号, 节目名称, 行号, 列号] 共6个元素
+      const USER_DATA_SIZE = 6;
+      
+      // 2024 index 位置
+      const YEARLY_INDEX = [
+        18 * USER_DATA_SIZE,
+        19 * USER_DATA_SIZE,
+        20 * USER_DATA_SIZE,
+        22 * USER_DATA_SIZE,
+        23 * USER_DATA_SIZE,
+        24 * USER_DATA_SIZE,
+        26 * USER_DATA_SIZE,
+        27 * USER_DATA_SIZE,
+        28 * USER_DATA_SIZE,
+        30 * USER_DATA_SIZE,
+        31 * USER_DATA_SIZE,
+        32 * USER_DATA_SIZE,
+        37 * USER_DATA_SIZE,
+        39 * USER_DATA_SIZE,
+        41 * USER_DATA_SIZE,
+        45 * USER_DATA_SIZE,
+        47 * USER_DATA_SIZE,
+        52 * USER_DATA_SIZE,
+        53 * USER_DATA_SIZE,
+        54 * USER_DATA_SIZE,
+        56 * USER_DATA_SIZE,
+        58 * USER_DATA_SIZE,
+        60 * USER_DATA_SIZE,
+        61 * USER_DATA_SIZE,
+        62 * USER_DATA_SIZE,
+        64 * USER_DATA_SIZE,
+        65 * USER_DATA_SIZE,
+        66 * USER_DATA_SIZE,
+        69 * USER_DATA_SIZE,
+        73 * USER_DATA_SIZE,
+        75 * USER_DATA_SIZE,
+        77 * USER_DATA_SIZE,
+        83 * USER_DATA_SIZE,
+        86 * USER_DATA_SIZE,
+        87 * USER_DATA_SIZE,
+        88 * USER_DATA_SIZE,
+        90 * USER_DATA_SIZE,
+        91 * USER_DATA_SIZE,
+        92 * USER_DATA_SIZE,
+        94 * USER_DATA_SIZE,
+        95 * USER_DATA_SIZE,
+        96 * USER_DATA_SIZE,
+        98 * USER_DATA_SIZE,
+        99 * USER_DATA_SIZE,
+        100 * USER_DATA_SIZE,
+      ];
+      // 显示的用户数量，这里是 119 个比较合适，可以随意更改，只要调整显示的方式就行
+      const SHOW_LENGTH = 119;
+      // 用户数据是否 READY
+      let IS_USERSDATA_READY = false;
+      // 用户数据
+      const LOTTERY_DATA = {
+        realUsers: [],
+        users: [],
+      };
+      // 是否显示了奖品面板
+      let PRIZE_PANEL_VISIBLE = false;
+      // 当前进行到第几轮，这里开始有缓存了
+      let CUR_STAGE = +localStorage.getItem("CUR_STAGE") || 1;
+      // 中奖人信息，也是有缓存的
+      const WINNERS_LIST = localStorage.getItem("WINNERS_LIST")
+        ? JSON.parse(localStorage.getItem("WINNERS_LIST"))
+        : [];
+    </script>
+    <script>
+      // 幸运单抽
+      const luckySingle = document.querySelector("#lucky-single");
+      luckySingle.addEventListener("click", () => {
+        window.open('/single.html');
+      });
+      // 查看中奖名单
+      const viewWinners = document.querySelector('#view-winners');
+      viewWinners.addEventListener('click', () => {
+        openWinnerTableCurtains();
+        // 隐藏 extra panel
+        const extraPanel = document.querySelector('#extra-panel');
+        extraPanel.classList.remove('show', 'animate__animated', 'animate__bounceInUp');
+        extraPanel.classList.add('hide');
+      }, false);
+      // 重置抽奖，重置所有缓存
+      const resetLottery = document.querySelector("#reset-lottery");
+      resetLottery.addEventListener(
+        "click",
+        () => {
+          localStorage.clear();
+          location.reload();
+        },
+        false
+      );
+      // 读取 Excel 文件，解析用户数据
+      function initUsers() {
+        fetch("performances.xlsx")
+          .then((response) => response.arrayBuffer())
+          .then((buffer) => {
+            /* 读取工作簿 */
+            const workbook = XLSX.read(buffer, { type: "buffer" });
+
+            /* 获取工作簿的第一个工作表 */
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+
+            /* 将工作表对象转换为JSON */
+            // FIXME: 这里很重要，抽奖的结果必须使用真实的用户数据，而不是 mock 的数据，这样可以确保公正准确
+            const realUsers = XLSX.utils.sheet_to_json(worksheet);
+            console.log("Real users: ", realUsers);
+            // 保存真实的用户数据
+            LOTTERY_DATA.realUsers = realUsers;
+            // 如果表格数据不够，就用原来的数据补充满，如果表格数据太多，就截取前面的 119 数据
+            // TODO: 这里现在默认的是用户数量肯定是 119 的一半还要多，所以只需要 mock 一个数量差就行了
+            const mockUsers =
+              realUsers.length >= SHOW_LENGTH
+                ? realUsers.slice(0, SHOW_LENGTH)
+                : [
+                    ...realUsers,
+                    ...realUsers,
+                    ...realUsers.slice(0, SHOW_LENGTH - realUsers.length * 2),
+                  ];
+            const users = [];
+            for (let i = 0; i < SHOW_LENGTH; i++) {
+              const username = mockUsers[i]["姓名"];
+              const emailprefix = mockUsers[i]["班级"];
+              const wkno = mockUsers[i]["序号"];
+              const performance = mockUsers[i]["节目名"];
+              // 行数
+              const row = (i % 17) + 1;
+              const column = Math.floor(i / 17) + 1;
+
+              const element = [username, emailprefix, wkno, performance, row, column];
+
+              users.push(...element);
+            }
+            // 保存展示的用户数据
+            LOTTERY_DATA.users = users;
+            // 用户数据准备完毕
+            IS_USERSDATA_READY = true;
+          })
+          .catch((error) =>
+            console.error("Error reading the excel file:", error)
+          );
+      }
+      // 大幕开启的动画函数
+      function openCurtains(winners) {
+        const curtainContainer = document.getElementById("curtain");
+        const curtainTop = document.getElementById("curtain-top");
+        const curtainBottom = document.getElementById("curtain-bottom");
+        const winContainer = document.getElementById("winners-container");
+
+        // 大幕向上/向下移动的动画
+        curtainContainer.style.opacity = 1;
+        curtainTop.style.transform = "translateY(-160px)";
+        curtainBottom.style.transform = "translateY(160px)";
+        // 大幕透明度变化的动画
+        winContainer.style.opacity = 0.9;
+
+        // 可选：添加过渡效果使动画更平滑
+        curtainTop.style.transition = "transform 2s ease-out";
+        curtainBottom.style.transition = "transform 2s ease-out";
+        // 控制 z-index，使得大幕在抽奖卡片上方
+        winContainer.style.transition = "opacity 1.5s ease-out";
+        curtainContainer.style.transition = "opacity 0.5s ease-out";
+
+        // 添加中奖卡片
+        const winnerList = document.querySelector("#winner-list");
+        const winnerListFragment = document.createDocumentFragment();
+        // 按照姓名排序
+        winners.forEach((winner) => {
+          const winnerCard = document.createElement("div");
+          winnerCard.className = `winner-card stage-${CUR_STAGE}`;
+          winnerCard.innerHTML = `
+            <div class="winner-card__info">
+              <div class="winner-card__info__wkno">${winner["班级"]}</div>
+              <div class="winner-card__info__username">${winner["姓名"]}</div>
+              <div class="winner-card__info__emailprefix">${winner["节目名"]}</div>
+            </div>`;
+          winnerListFragment.appendChild(winnerCard);
+        });
+        winnerList.appendChild(winnerListFragment);
+        // 显示中奖名单的同时，中奖特效
+        const dingdingding = document.querySelector("#dingdingding");
+        dingdingding.play();
+        // 显示名单的同时，把开始抽奖隐藏
+        const lottery = document.querySelector("#lottery");
+        setTimeout(() => {
+          lottery.classList.remove(
+            "show",
+            "animate__animated",
+            "animate__bounceInUp"
+          );
+          lottery.classList.add("hide");
+        }, 100);
+      }
+
+      // 大幕关闭的动画函数
+      function resetCurtains() {
+        const curtainContainer = document.getElementById("curtain");
+        const curtainTop = document.getElementById("curtain-top");
+        const curtainBottom = document.getElementById("curtain-bottom");
+        const winContainer = document.getElementById("winners-container");
+
+        // 重置大幕的位置
+        curtainTop.style.transform = "translateY(0)";
+        curtainBottom.style.transform = "translateY(0)";
+        winContainer.style.opacity = 0;
+        curtainContainer.style.opacity = 0;
+        setTimeout(() => {
+          document.querySelector("#winner-list").innerHTML = "";
+        }, 1000);
+      }
+
+       // 中奖名单表格大幕开启的动画函数
+       function openWinnerTableCurtains() {
+        const curtainContainer = document.getElementById('winner-list-table__curtain');
+        const curtainTop = document.getElementById('winner-list-table__curtain-top');
+        const curtainBottom = document.getElementById('winner-list-table__curtain-bottom');
+        const winTableContainer = document.querySelector('.winner-table-container');
+        
+        // 大幕向上/向下移动的动画
+        curtainContainer.style.opacity = 1;
+        curtainTop.style.transform = 'translateY(-400px)';
+        curtainBottom.style.transform = 'translateY(400px)';
+        // 大幕透明度变化的动画
+        winTableContainer.style.opacity = 0.9;
+
+        // 可选：添加过渡效果使动画更平滑
+        curtainTop.style.transition = 'transform 2s ease-out';
+        curtainBottom.style.transition = 'transform 2s ease-out';
+        // 控制 z-index，使得大幕在抽奖卡片上方
+        winTableContainer.style.transition = 'opacity 1.5s ease-out';
+        curtainContainer.style.transition = 'opacity 0.5s ease-out';
+        const winTableBodyContainer = document.querySelector('#winner-table_body');
+        // 添加中奖卡片
+        const winnerListFragment = document.createDocumentFragment();
+        WINNERS_LIST.forEach(winner => {
+          const winnerRow = document.createElement('tr');
+          winnerRow.innerHTML = `
+            <td>${winner["序号"]}</td>
+            <td>${winner["姓名"]}</td>
+            <td>${winner["班级"]}</td>
+            <td>${winner["节目名"]}</td>
+            <td>${winner["stage"]}</td>
+            <td>${winner["name"]}</td>
+          `;
+          winnerListFragment.appendChild(winnerRow);
+        })
+        winTableBodyContainer.appendChild(winnerListFragment);
+        // 显示名单的同时，把开始抽奖隐藏
+        const lottery = document.querySelector('#lottery')
+        setTimeout(() => {
+          lottery.classList.remove('show', 'animate__animated', 'animate__bounceInUp');
+          lottery.classList.add('hide');
+        }, 100);
+      }
+
+      // 中奖名单表格大幕关闭的动画函数
+      function resetWinnerTableCurtains() {
+        const curtainContainer = document.getElementById('winner-list-table__curtain');
+        const curtainTop = document.getElementById('winner-list-table__curtain-top');
+        const curtainBottom = document.getElementById('winner-list-table__curtain-bottom');
+        const winTableContainer = document.querySelector('.winner-table-container');
+        
+        // 重置大幕的位置
+        curtainTop.style.transform = 'translateY(0)';
+        curtainBottom.style.transform = 'translateY(0)';
+        winTableContainer.style.opacity = 0;
+        curtainContainer.style.opacity = 0;
+        setTimeout(() => {
+          document.querySelector('#winner-table_body').innerHTML = '';
+        }, 1000);
+      }
+
+      // 关闭中奖名单表格大幕
+      const closeWinnerTable = document.querySelector('#close-winner-table');
+      closeWinnerTable.addEventListener('click', () => {
+        resetWinnerTableCurtains();
+        // 显示抽奖按钮
+        const lottery = document.querySelector('#lottery');
+        // 显示设置按钮
+        const showExtraIcon = document.querySelector('#show-extra-panel');
+        setTimeout(() => {
+          lottery.classList.remove('hide');
+          lottery.classList.add('show', 'animate__animated', 'animate__bounceInUp');
+          showExtraIcon.classList.remove('hide');
+        }, 2200);
+      }, false);
+
+      /**
+       * 导出中奖名单
+       **/
+      const exportWinnerList = document.querySelector("#export-winner-list");
+      exportWinnerList.addEventListener(
+        "click",
+        () => {
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(WINNERS_LIST);
+          XLSX.utils.book_append_sheet(wb, ws, "2024年会中奖名单");
+          XLSX.writeFile(wb, `2024年会中奖名单_${(new Date()).toLocaleDateString().replaceAll('/', '-')}.xlsx`);
+        },
+        false
+      );
+
+      /**
+       * 点击显示 Prize Panel
+       **/
+      const showPrizeIcon = document.querySelector("#show-prize-panel");
+      showPrizeIcon.addEventListener(
+        "click",
+        () => {
+          PRIZE_PANEL_VISIBLE = true;
+          showPrizeIcon.classList.add("hide");
+          const prizePanel = document.querySelector("#prize-panel");
+          prizePanel.classList.add(
+            "animate__animated",
+            "animate__fadeInLeftBig",
+            "showflex"
+          );
+        },
+        false
+      );
+      /**
+       * 点击显示 extra panel
+       **/
+      const showExtraIcon = document.querySelector("#show-extra-panel");
+      showExtraIcon.addEventListener(
+        "click",
+        () => {
+          showExtraIcon.classList.add("hide");
+          const extraPanel = document.querySelector("#extra-panel");
+          extraPanel.classList.remove("hide");
+          extraPanel.classList.add(
+            "animate__animated",
+            "animate__fadeInRightBig",
+            "showflex"
+          );
+        },
+        false
+      );
+      /**
+       * 生成中奖人名单，反给前端用来展示当前轮次的中奖信息
+       **/
+      function generateWinners() {
+        // 必须根据真实的用户来生成，这样才能保证公正，把缓存里的中奖者名单全部筛选出去
+        const realUsers = LOTTERY_DATA.realUsers.filter(
+          (user) =>
+            !WINNERS_LIST.find((winner) => winner["节目名"] === user["节目名"])
+        );
+        // 从抽奖轮次中获取需要几个人
+        const prizeInfo = PRIZES_LIST.find(
+          (prize) => prize.stage === CUR_STAGE
+        );
+        const { count, stage, name } = prizeInfo;
+        // 从用户里随机选出指定数量的人
+        const winners = [];
+        for (let i = 0; i < count; i++) {
+          const randomIndex = Math.floor(Math.random() * realUsers.length);
+          const winner = realUsers[randomIndex];
+          winners.push({
+            ...winner,
+            stage,
+            name,
+          });
+          // 从用户列表中删除已经中奖的用户
+          realUsers.splice(randomIndex, 1);
+        }
+        // 更新中奖人信息并存入缓存
+        WINNERS_LIST.push(...winners);
+        localStorage.setItem("WINNERS_LIST", JSON.stringify([...WINNERS_LIST]));
+        return winners;
+      }
+      /**
+       * 更新轮次信息
+       **/
+      function updateStageInfo() {
+        const prizeInfo = PRIZES_LIST.find(
+          (prize) => prize.stage === CUR_STAGE
+        );
+        const { count, name, stage } = prizeInfo;
+        // 更新对应的内容
+        const prizeName = document.querySelector("#prize-name");
+        const prizeCount = document.querySelector("#prize-count");
+        const prizeStage = document.querySelector("#prize-stage");
+        // const prizeImg = document.querySelector("#prize-img");
+        prizeName.textContent = name;
+        prizeCount.textContent = `数量: ${count}个`;
+        prizeStage.textContent = `第${stage}轮`;
+        // prizeImg.src = image;
+      }
+      /**
+       * 背景音乐相关逻辑
+       **/
+      const bgmContainer = document.querySelector(".music-icon");
+      bgmContainer.addEventListener(
+        "click",
+        () => {
+          const bgm = document.querySelector("#bg-music");
+          if (bgm.paused) {
+            bgm.play();
+            bgmContainer.classList.add("play");
+          } else {
+            bgm.pause();
+            bgmContainer.classList.remove("play");
+          }
+        },
+        false
+      );
+      /**
+       * 初始化页面
+       **/
+      window.onload = function () {
+        // 初始化标题和抽奖按钮
+        const title = document.querySelector(".title");
+        const lottery = document.querySelector("#lottery");
+        setTimeout(() => {
+          title.classList.add(
+            "show",
+            "animate__animated",
+            "animate__bounceInDown"
+          );
+          lottery.classList.add(
+            "show",
+            "animate__animated",
+            "animate__bounceInUp"
+          );
+        }, 2200);
+        // 初始化用户数据
+        initUsers();
+        // 初始化轮次信息
+        updateStageInfo();
+      };
+    </script>
+    <script type="module">
+      /**
+       * 初始化引入所有依赖
+       **/
+      import { CSS3DRenderer, CSS3DObject } from "./js/CSS3DRenderer.js";
+      import { TrackballControls } from "./js/TrackballControls.js";
+      import TWEEN from "./js/tween.module.js";
+
+      /**
+       * @空间复杂度  S(n) = o(1);
+       * @时间复杂度  T(n) = O(1);
+       */
+
+      /**
+       * [users 用户数据]
+       * @type {Array}
+       * @element 五个一组 [ 姓名 英文 工号 所在列 所在行 ]
+       * @element 五个一组 [ symbol detail1 detail2 columnInfo colInfo ]
+       *
+       * [ scene camera renderer ] the three basic component of three.js
+       * [ controls trackballControls obj ]
+       *
+       * [objects save CSS3D domElem]
+       * @type {Array}
+       * scene - 环境对象
+       * camera - 相机对象
+       * renderer - 渲染器对象
+       * controls - 轨道控制器对象
+       * [targets save the four kinds vertices]
+       * @type {Object}
+       * [ table sphere helix grid ] transform CSS3D elem'position to one of these for animation
+       */
+      let scene, camera, renderer, controls;
+      // 保存 CSS3D 所有的 domElem
+      const objects = [];
+      // 保存四种形式的 Objects3D 对象信息
+      const targets = {
+        grid: [],
+        helix: [],
+        table: [],
+        sphere: [],
+      };
+
+      /**
+       * 布局方式
+       */
+      const LAYOUT_MODE = {
+        表格: "table",
+        网格: "grid",
+        球体: "sphere",
+        螺旋: "helix",
+      };
+      // 初始化布局
+      let curLayout = LAYOUT_MODE.表格;
+      // 是否在抽奖中
+      let isLottery = false;
+
+      /**
+       * [init initialize scene && create animation && set constrol]
+       *
+       * [camera perspective camera]
+       * @param filedView
+       * @param aspect
+       * @param near clipping plane
+       * @param far clipping plane
+       * @type {THREE}
+       *
+       * [renderer CSS3DRenderer only used to tranform domElem to 3D model]
+       * WebGLoutput the father node of domElem container
+       * @type {THREE}
+       *
+       * [controls create trackball control]
+       * controls.minDistance = 500;  the camera min distance in Z Axis
+       * controls.maxDistance = 6000; the camera max distance in Z Axis
+       * @type {THREE}
+       */
+
+      function init() {
+        const felidView = 40;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const aspect = width / height;
+        const nearPlane = 1;
+        const farPlane = 1000;
+        const WebGLoutput = document.getElementById("container");
+
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(
+          felidView,
+          aspect,
+          nearPlane,
+          farPlane
+        );
+        camera.position.z = 3000;
+
+        console.log("camera.position: ", camera.position);
+
+        renderer = new CSS3DRenderer();
+        renderer.setSize(width, height);
+        renderer.domElement.style.position = "absolute";
+        WebGLoutput.appendChild(renderer.domElement);
+
+        controls = new TrackballControls(camera, renderer.domElement);
+
+        controls.rotateSpeed = 1;
+        controls.staticMoving = true;
+        controls.minDistance = 500;
+        controls.maxDistance = 6000;
+        controls.addEventListener("change", render);
+
+        /**
+         * [i 0 5 10 .....]
+         * [len iterator count]
+         * @type {Number}
+         *
+         * [element dom element]
+         * [backgroundColor create a random color of g from 0.25 to 0.75]
+         *
+         * [number order]
+         * @type {[int]}
+         *
+         * [symbol example: H element]
+         * @type {[string]}
+         *
+         * [detail fullname && quality]
+         * @type {[string && float]}
+         *
+         *[object transform domElem to CSS3D object]
+         * @type {THREE}
+         * @position vector3( value1, value2, value3 ) [value: -2000 ~ 2000]
+         *
+         */
+        // 生成 SHOW_LENGTH * USER_DATA_SIZE 个元素，这里需要根据用户数量 * USER_DATA_SIZE 来生成，因为每个用户占据 USER_DATA_SIZE 个元素长度
+        for (let i = 0; i < SHOW_LENGTH * USER_DATA_SIZE; i += USER_DATA_SIZE) {
+          const element = document.createElement("div");
+          element.className = YEARLY_INDEX.includes(i)
+            ? "element yearly"
+            : "element";
+          element.style.backgroundColor = YEARLY_INDEX.includes(i)
+            ? `rgba(253, 105, 0, ${Math.random() * 0.25 + 0.6}`
+            : `rgba( 0, 127, 127, ${Math.random() * 0.5 + 0.25})`;
+
+          const number = document.createElement("div");
+          // 序号
+          number.className = "wkno";
+          // 如果小于 10，向前补 0
+          number.textContent = +LOTTERY_DATA.users[i + 1] < 10 ? `0${+LOTTERY_DATA.users[i + 1]}` : LOTTERY_DATA.users[i + 1];
+          element.appendChild(number);
+
+          const symbol = document.createElement("div");
+          // 节目名称
+          symbol.className = "username";
+          symbol.textContent = LOTTERY_DATA.users[i + 3];
+          element.appendChild(symbol);
+
+          const detail = document.createElement("div");
+          // 工号
+          detail.className = "emailprefix";
+          detail.innerHTML = LOTTERY_DATA.users[i];
+          element.appendChild(detail);
+
+          const performance = document.createElement("div");
+          // // 节目名称
+          // performance.className = "performance";
+          // performance.innerHTML = LOTTERY_DATA.users[i + 3];
+          // element.appendChild(performance);
+
+          const object = new CSS3DObject(element);
+          object.position.x = Math.random() * 4000 - 2000;
+          object.position.y = Math.random() * 4000 - 2000;
+          object.position.z = Math.random() * 4000 - 2000;
+          scene.add(object);
+
+          objects.push(object);
+        }
+
+        const objLength = objects.length;
+
+        createGridVertices();
+        createTableVertices();
+        createHelixVertices();
+        createSphereVertices();
+
+        /**
+         * 生成排列的表格元素
+         * @type {[number]}
+         *
+         * [createTableVertices create table format vertices]
+         *
+         * [createTableVertices create sphere format vertices]
+         *
+         * [createTableVertices create helix format vertices]
+         *
+         * [createTableVertices create grid format vertices]
+         */
+        // 生成 table 格式的元素
+        function createTableVertices() {
+          let i = 0;
+
+          for (; i < SHOW_LENGTH * USER_DATA_SIZE; i += USER_DATA_SIZE) {
+            const object = new THREE.Object3D();
+            /**
+             * FIXME:
+             * 如果想变宽变高，可以通过修改这里的 160 和 200，但是需要修改 CSS 中的 .element 的宽高现在是（140 和 180）
+             * 这里的 i + 4 和 i + 5 对应的是 element 的 row 和 column 坐标，如果改变结构，取模的值需要相应改变
+             **/
+            object.position.x = LOTTERY_DATA.users[i + 4] * 160 - 1360;
+            object.position.y = -LOTTERY_DATA.users[i + 5] * 200 + 800;
+            object.position.z = 0;
+
+            targets.table.push(object);
+          }
+        }
+
+        function createSphereVertices() {
+          let i = 0;
+          const vector = new THREE.Vector3();
+
+          for (; i < objLength; ++i) {
+            let phi = Math.acos(-1 + (2 * i) / objLength);
+            let theta = Math.sqrt(objLength * Math.PI) * phi;
+            const object = new THREE.Object3D();
+
+            object.position.x = 800 * Math.cos(theta) * Math.sin(phi);
+            object.position.y = 800 * Math.sin(theta) * Math.sin(phi);
+            object.position.z = -800 * Math.cos(phi);
+
+            // rotation object
+
+            vector.copy(object.position).multiplyScalar(2);
+            object.lookAt(vector);
+            targets.sphere.push(object);
+          }
+        }
+
+        function createHelixVertices() {
+          let i = 0;
+          const vector = new THREE.Vector3();
+
+          for (; i < objLength; ++i) {
+            let phi = i * 0.213 + Math.PI;
+
+            const object = new THREE.Object3D();
+
+            object.position.x = 800 * Math.sin(phi);
+            object.position.y = -(i * 8) + 500;
+            object.position.z = 800 * Math.cos(phi + Math.PI);
+
+            object.scale.set(1.1, 1.1, 1.1);
+
+            vector.x = object.position.x * 2;
+            vector.y = object.position.y;
+            vector.z = object.position.z * 2;
+
+            object.lookAt(vector);
+
+            targets.helix.push(object);
+          }
+        }
+
+        function createGridVertices() {
+          let i = 0;
+
+          for (; i < objLength; ++i) {
+            const object = new THREE.Object3D();
+
+            object.position.x = 360 * (i % 5) - 800;
+            object.position.y = -360 * (((i / 5) >> 0) % 5) + 700;
+            object.position.z = -700 * ((i / 25) >> 0);
+
+            targets.grid.push(object);
+          }
+        }
+
+        // 开始抽奖按钮
+        const lotteryBtn = document.getElementById("lottery");
+        // 关闭中奖名单按钮
+        const closeWinnerListBtn = document.getElementById("close-winner-list");
+
+        // 关闭中奖名单
+        closeWinnerListBtn.addEventListener(
+          "click",
+          () => {
+            // 把开始抽奖放出来
+            const lottery = document.querySelector("#lottery");
+            setTimeout(() => {
+              lottery.classList.remove("hide");
+              lottery.classList.add(
+                "show",
+                "animate__animated",
+                "animate__bounceInUp"
+              );
+            }, 2200);
+            // 重置大幕
+            resetCurtains();
+            // 重新回到 table 页面
+            curLayout = LAYOUT_MODE.表格;
+            transform(targets.table, 1000);
+            camera.position.z = 3000;
+            updateStageInfo();
+          },
+          false
+        );
+
+        /**
+         * 给开始抽奖绑定点击事件，点击后开始抽奖
+         * 抽奖过程中文案变成 停！
+         * 抽奖结束后，文案变成 开始抽奖
+         **/
+        lotteryBtn.addEventListener(
+          "click",
+          function () {
+            if (!PRIZE_PANEL_VISIBLE) {
+              // 如果没显示，那么就显示
+              document.querySelector("#show-prize-panel").click();
+            }
+            if (CUR_STAGE > PRIZES_LIST.length) {
+              // 已经抽完了，已经是最后一轮了
+              alert("所有奖品均已抽完！！！");
+              return;
+            }
+            if (isLottery) {
+              const musicContainer = document.querySelector(".music-icon");
+              musicContainer.click();
+              // 停止抽奖
+              isLottery = false;
+              lotteryBtn.textContent = "开始抽奖";
+              // 停止抽奖的逻辑，让所有元素停止旋转
+              stopSphereAnimation();
+              // 随机生成中奖人名单
+              const winners = generateWinners();
+              // 然后渲染获奖名单
+              openCurtains(winners);
+              // 更新轮次，已经抽完奖了
+              CUR_STAGE += 1;
+              // 更新缓存轮次
+              localStorage.setItem("CUR_STAGE", CUR_STAGE);
+            } else {
+              const musicContainer = document.querySelector(".music-icon");
+              musicContainer.click();
+              // 开始抽奖
+              lotteryBtn.textContent = "停";
+              isLottery = true;
+              // 开始抽奖的逻辑，让所有元素开始旋转
+              startSphereAnimation();
+            }
+          },
+          false
+        );
+
+        // 球体动画相关参数
+        let ang = 0;
+        let timer;
+
+        /**
+         * 开始进行球体旋转
+         **/
+        function startSphereAnimation() {
+          curLayout = LAYOUT_MODE.球体;
+          // 如果是奇数，就地球，如果是偶数，就螺旋
+          CUR_STAGE % 2 ? transform(targets.sphere, 2000) : transform(targets.helix, 2000);
+          // TODO: 这里处理相机旋转以及停止旋转，并封装一下
+          setTimeout(() => {
+            timer = setInterval(() => {
+              // 旋转相机位置，球体就旋转了
+              ang += Math.PI / 50;
+              camera.position.x = Math.cos(ang) * 3000;
+              camera.position.z = Math.sin(ang) * 3000;
+              camera.position.y = 0;
+            }, 10);
+          }, 2600);
+        }
+
+        /**
+         * 停止球体旋转
+         **/
+        function stopSphereAnimation() {
+          clearInterval(timer);
+          // 定义相机的起始和结束位置
+          var endPos = {
+            x: 0,
+            y: 0,
+            z: 4600,
+          };
+
+          // 创建新的 tween 对象，用于从 start 到 end
+          new TWEEN.Tween(camera.position)
+            .to(endPos, 2000) // 持续时间 2000 毫秒
+            .easing(TWEEN.Easing.Cubic.Out) // 缓动类型
+            .start();
+
+          new TWEEN.Tween(this)
+            .to({}, 1000 * 2)
+            .onUpdate(render)
+            .start()
+            .onComplete(() => {
+              // 重置旋转角度
+              ang = 0;
+            });
+        }
+
+        // 如果是表格布局，就随机替换，如果不是就不动
+        function updateRandomElements(numElementsToUpdate) {
+          if (curLayout !== LAYOUT_MODE.表格) return;
+          // 为了随机更新，创建一个包含所有索引的数组
+          const indices = [];
+          for (let i = 0; i < objects.length; i++) {
+            indices.push(i);
+          }
+
+          // 随机选择要更新的元素的索引
+          const indicesToUpdate = [];
+          for (let i = 0; i < numElementsToUpdate; i++) {
+            const randomIndex = Math.floor(Math.random() * indices.length);
+            indicesToUpdate.push(indices.splice(randomIndex, 1)[0]);
+          }
+
+          // 更新选定的元素
+          indicesToUpdate.forEach((ind) => {
+            // 随机获取一个用户数据，按照 USER_DATA_SIZE 来取模，是因为每个用户数据占用 USER_DATA_SIZE 个元素
+            const _index = USER_DATA_SIZE * Math.floor(Math.random() * 50);
+            // TODO: 需要实现获取用户数据的逻辑
+            const userData = [
+              LOTTERY_DATA.users[_index],
+              LOTTERY_DATA.users[_index + 1],
+              LOTTERY_DATA.users[_index + 2],
+              LOTTERY_DATA.users[_index + 3],
+              LOTTERY_DATA.users[_index + 4],
+              LOTTERY_DATA.users[_index + 5],
+            ];
+            const element = objects[ind].element;
+            // 更新element的内容
+            element.querySelector(".username").textContent = userData[0];
+            element.querySelector(".emailprefix").textContent = userData[1];
+            element.querySelector(".wkno").textContent = userData[2];
+            element.querySelector(".performance").textContent = userData[3];
+            // ... 更新其他需要的DOM元素
+            // 更新元素内容的同时，添加高亮动画
+            element.classList.add("highlight");
+
+            // 设置一个定时器，在1秒后移除高亮类
+            setTimeout(() => {
+              element.classList.remove("highlight");
+            }, 1000);
+          });
+
+          // 重新渲染场景
+          renderer.render(scene, camera);
+        }
+
+        // 设置定时器周期性调用 updateRandomElements 函数
+
+        window.addEventListener("resize", onWindowResize, false);
+        // default animation
+        transform(targets.table, 2000);
+        // 等所有布局都完成之后，再开始随机更新
+        setTimeout(() => {
+          // 每 10 秒随机更新 26 个元素的内容和位置
+          setInterval(() => updateRandomElements(26), 1000);
+        }, 3000);
+
+        /**
+         * [transform transform domelem'position to target'position]
+         * @param     {[array]}    targets  [description]
+         * @param     {[number]}    duration [description]
+         * @return    {[type]}             [description]
+         */
+
+        function transform(targets, duration) {
+          TWEEN.removeAll();
+
+          for (let i = 0; i < objLength; ++i) {
+            let object = objects[i];
+            let target = targets[i];
+
+            new TWEEN.Tween(object.position)
+              .to(
+                {
+                  x: target.position.x,
+                  y: target.position.y,
+                  z: target.position.z,
+                },
+                Math.random() * duration + duration
+              )
+              .easing(TWEEN.Easing.Exponential.InOut)
+              .start();
+
+            new TWEEN.Tween(object.rotation)
+              .to(
+                {
+                  x: target.rotation.x,
+                  y: target.rotation.y,
+                  z: target.rotation.z,
+                },
+                Math.random() * duration + duration
+              )
+              .easing(TWEEN.Easing.Exponential.InOut)
+              .start();
+          }
+
+          // 这个补间用来在位置与旋转补间同步执行，通过onUpdate在每次更新数据后渲染scene和camera
+          new TWEEN.Tween({})
+            .to({}, duration * 2)
+            .onUpdate(render)
+            .start();
+        }
+
+        render();
+      }
+
+      /**
+       * [onWindowResize reset the scene size && camera.aspect && re render]
+       * @return
+       */
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        render();
+      }
+
+      /**
+       * [animation update all tween && controls]
+       */
+      function animation() {
+        TWEEN.update();
+        controls.update();
+        requestAnimationFrame(animation);
+      }
+
+      function render() {
+        renderer.render(scene, camera);
+      }
+
+      // 循环判断用户数据是否 READY
+      let dataTimer;
+      dataTimer = setInterval(() => {
+        // 如果已经准备好了
+        if (IS_USERSDATA_READY) {
+          console.log("用户数据已经准备好了");
+          init();
+          animation();
+          clearInterval(dataTimer);
+        }
+      }, 200);
+    </script>
+  </body>
+</html>
