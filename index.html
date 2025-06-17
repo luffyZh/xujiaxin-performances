@@ -182,6 +182,8 @@
     <script src="./js/xlsx.min.js"></script>
     <script src="./js/prizes.js"></script>
     <script>
+      // 是否已经结束
+      let HAS_FINISHED = false;
       // 每个用户数据占据的元素数量
       // 每个用户包含：[姓名, 工号, 序号, 节目名称, 行号, 列号] 共6个元素
       const USER_DATA_SIZE = 6;
@@ -525,6 +527,12 @@
        * 生成中奖人名单，反给前端用来展示当前轮次的中奖信息
        **/
       function generateWinners() {
+        // 检查当前轮次是否有效
+        if (CUR_STAGE > PRIZES_LIST.length) {
+          console.error(`当前轮次 ${CUR_STAGE} 超出了奖品列表范围 (1-${PRIZES_LIST.length})`);
+          return [];
+        }
+        
         // 必须根据真实的用户来生成，这样才能保证公正，把缓存里的中奖者名单全部筛选出去
         const realUsers = LOTTERY_DATA.realUsers.filter(
           (user) =>
@@ -534,10 +542,32 @@
         const prizeInfo = PRIZES_LIST.find(
           (prize) => prize.stage === CUR_STAGE
         );
+        
+        // 如果找不到对应轮次信息，返回空数组
+        if (!prizeInfo) {
+          console.error(`找不到第 ${CUR_STAGE} 轮的奖品信息`);
+          return [];
+        }
+        
         const { count, stage, name, startNumber, endNumber } = prizeInfo;
+        
+        // 检查剩余参与者数量，如果不够就调整抽奖数量
+        const availableCount = realUsers.length;
+        const actualCount = Math.min(count, availableCount);
+        
+        if (actualCount < count) {
+          HAS_FINISHED = true;
+          console.warn(`第 ${stage} 轮原计划抽取 ${count} 人，但只剩余 ${availableCount} 人，将抽取所有剩余人员`);
+        }
+        
+        if (actualCount === 0) {
+          console.warn(`第 ${stage} 轮没有剩余可抽取的参与者`);
+          return [];
+        }
+        
         // 从用户里随机选出指定数量的人
         const winners = [];
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < actualCount; i++) {
           const randomIndex = Math.floor(Math.random() * realUsers.length);
           const winner = realUsers[randomIndex];
           winners.push({
@@ -561,6 +591,10 @@
         const prizeInfo = PRIZES_LIST.find(
           (prize) => prize.stage === CUR_STAGE
         );
+        if (!prizeInfo) {
+          console.warn(`第 ${CUR_STAGE} 轮没有剩余可抽取的参与者`);
+          return;
+        }
         const { count, name, stage } = prizeInfo;
         // 更新对应的内容
         const prizeName = document.querySelector("#prize-name");
@@ -931,9 +965,15 @@
               // 如果没显示，那么就显示
               document.querySelector("#show-prize-panel").click();
             }
+            // 判断是否已经结束
+            if (HAS_FINISHED) {
+              alert("所有节目均已抽完！！！");
+              return;
+            }
+            // 判断是否已经结束
             if (CUR_STAGE > PRIZES_LIST.length) {
               // 已经抽完了，已经是最后一轮了
-              alert("所有奖品均已抽完！！！");
+              alert("所有节目均已抽完！！！");
               return;
             }
             if (isLottery) {
