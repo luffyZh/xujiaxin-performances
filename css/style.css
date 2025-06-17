@@ -47,7 +47,7 @@ body {
   width: 400px;
   left: 50%;
   margin-left: -200px;
-  bottom: 20px;
+  bottom: 30px;
   text-align: center;
   font-size: 48px;
 }
@@ -320,18 +320,30 @@ canvas {
 
 .winner-card__info {
   height: 100%;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
-.winner-card__info__wkno {
+.winner-card__info_topwrapper {
   width: 100%;
   display: flex;
-  justify-content: end;
-  font-size: 1.2rem;
-  margin-right: 20px;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+.winner-card__info__ind {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winner-card__info__wkno {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .winner-card__info__username {
