@@ -263,7 +263,7 @@ canvas {
 }
 
 .winner-card {
-  width: 210px;
+  width: 200px;
   height: 260px;
   margin: 0 20px;
   font-size: 2rem;
@@ -274,7 +274,7 @@ canvas {
 }
 
 .winner-card.stage-1 {
-  width: 210px;
+  width: 200px;
   height: 260px;
   margin: 0 8px;
   font-size: 1.8rem;
@@ -283,7 +283,7 @@ canvas {
 }
 
 .winner-card.stage-2 {
-  width: 210px;
+  width: 200px;
   height: 260px;
   margin: 0 10px;
   background-color: rgba(46, 139, 87, 1) !important;
@@ -291,7 +291,7 @@ canvas {
 }
 
 .winner-card.stage-3 {
-  width: 210px;
+  width: 200px;
   height: 260px;
   background-color: rgba(0, 206, 209, 1) !important;
   box-shadow: 0 0 12px rgba(0, 206, 209, 1);
