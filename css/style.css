@@ -125,7 +125,6 @@ canvas {
   right: 0;
   font-size: 20px;
   font-weight: bold;
-  white-space: nowrap;
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.95);
 }
@@ -264,7 +263,7 @@ canvas {
 }
 
 .winner-card {
-  width: 180px;
+  width: 220px;
   height: 260px;
   margin: 0 20px;
   font-size: 2rem;
@@ -275,8 +274,8 @@ canvas {
 }
 
 .winner-card.stage-1 {
-  width: 150px;
-  height: 230px;
+  width: 220px;
+  height: 260px;
   margin: 0 8px;
   font-size: 1.8rem;
   background-color: rgba(100, 149, 237, 1) !important;
@@ -284,15 +283,15 @@ canvas {
 }
 
 .winner-card.stage-2 {
-  width: 170px;
-  height: 250px;
+  width: 220px;
+  height: 260px;
   margin: 0 10px;
   background-color: rgba(46, 139, 87, 1) !important;
   box-shadow: 0 0 12px rgba(46, 139, 87, 1);
 }
 
 .winner-card.stage-3 {
-  width: 180px;
+  width: 220px;
   height: 260px;
   background-color: rgba(0, 206, 209, 1) !important;
   box-shadow: 0 0 12px rgba(0, 206, 209, 1);
@@ -350,14 +349,26 @@ canvas {
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 2rem;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  text-align: center;
 }
+
+.winner-card__info__type {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
 
 .winner-card__info__emailprefix {
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 #curtain {
@@ -659,12 +670,62 @@ canvas {
   opacity: 0;
   transition: opacity 1.5s ease-out; /* 添加动画效果 */
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  max-height: 70vh; /* 限制容器最大高度 */
+  display: flex;
+  flex-direction: column;
 }
+
+.winner-table-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c6c6c6;
+  overflow: hidden;
+}
+
+.winner-table-header {
+  flex-shrink: 0; /* 防止表头被压缩 */
+  background-color: #ddeeff;
+}
+
+.winner-table-body {
+  flex: 1;
+  overflow-y: auto; /* 内容区域可滚动 */
+  max-height: 50vh; /* 限制内容区域最大高度 */
+}
+
 .winner-table {
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid #c6c6c6 !important;
 }
+
+/* 确保两个表格的列宽一致 */
+.winner-table-header .winner-table,
+.winner-table-body .winner-table {
+  table-layout: fixed; /* 固定表格布局，确保列宽一致 */
+}
+
+/* 明确设置每列的宽度 */
+.winner-table-header .winner-table th:nth-child(1),
+.winner-table-body .winner-table td:nth-child(1) {
+  width: 10%;
+}
+
+.winner-table-header .winner-table th:nth-child(2),
+.winner-table-body .winner-table td:nth-child(2) {
+  width: 15%;
+}
+
+.winner-table-header .winner-table th:nth-child(3),
+.winner-table-body .winner-table td:nth-child(3) {
+  width: 35%;
+}
+
+.winner-table-header .winner-table th:nth-child(4),
+.winner-table-body .winner-table td:nth-child(4) {
+  width: 40%;
+}
+
 .winner-table th {
   border-collapse: collapse;
   border-right: 1px solid #c6c6c6 !important;
@@ -675,6 +736,7 @@ canvas {
   font-weight: normal;
   text-align: center;
 }
+
 .winner-table td {
   border-collapse: collapse;
   border-right: 1px solid #c6c6c6 !important;
@@ -685,11 +747,32 @@ canvas {
   text-align: center;
   word-break: break-all;
 }
-.winner-table tr:nth-child(odd) {
+
+.winner-table-body .winner-table tr:nth-child(odd) {
   background-color: #fff !important;
 }
-.winner-table tr:nth-child(even) {
+
+.winner-table-body .winner-table tr:nth-child(even) {
   background-color: #f8f8f8 !important;
+}
+
+/* 自定义滚动条样式 */
+.winner-table-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.winner-table-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.winner-table-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.winner-table-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 /**

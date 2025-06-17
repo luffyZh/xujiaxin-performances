@@ -118,15 +118,11 @@
               fill="#7fffff"
             ></path>
           </svg>
-          重置抽奖
+          重置抽取
         </div>
         <div class="extra-item" id="view-winners">
           <svg t="1705998858890" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6866" width="48" height="48"><path d="M62.360791 138.133034l150.266375 0 0 150.192697-150.266375 0 0-150.192697Z" p-id="6867" fill="#7FFFFF"></path><path d="M362.820887 138.133034l596.895529 0 0 150.192697-596.895529 0 0-150.192697Z" p-id="6868" fill="#7FFFFF"></path><path d="M62.360791 438.08864l150.266375 0 0 150.193721-150.266375 0 0-150.193721Z" p-id="6869" fill="#7FFFFF"></path><path d="M362.820887 438.08864l596.895529 0 0 150.193721-596.895529 0 0-150.193721Z" p-id="6870" fill="#7FFFFF"></path><path d="M62.360791 735.7459l150.266375 0 0 150.192697-150.266375 0 0-150.192697Z" p-id="6871" fill="#7FFFFF"></path><path d="M362.820887 735.7459l596.895529 0 0 150.192697-596.895529 0 0-150.192697Z" p-id="6872" fill="#7FFFFF"></path></svg>
           查看名单
-        </div>
-        <div class="extra-item" id="lucky-single">
-          <svg t="1706057282901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7215" width="48" height="48"><path d="M667.91424 742.4l-77.41952-52.02432L662.95808 281.6 353.28 396.18048l95.38048 8.05376 10.52672 289.23904-83.6096 35.3024z" fill="#7fffff" p-id="7216"></path></svg>
-          幸运单抽
         </div>
       </div>
     </section>
@@ -156,17 +152,25 @@
 
       <!-- 中奖名单表格 -->
       <div class="winner-table-container">
-        <table class="winner-table">
-          <thead>
-            <tr>
-              <th width="10%">序号</th>
-              <th width="15%">班级</th>
-              <th width="35%">姓名</th>
-              <th width="40%">节目名称</th>
-            </tr>
-          </thead>
-          <tbody id="winner-table_body"></tbody>
-        </table>
+        <div class="winner-table-wrapper">
+          <div class="winner-table-header">
+            <table class="winner-table">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>班级</th>
+                  <th>姓名</th>
+                  <th>节目名称</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="winner-table-body">
+            <table class="winner-table">
+              <tbody id="winner-table_body"></tbody>
+            </table>
+          </div>
+        </div>
         <div class="winner-table-actions">
           <div class="item" id="export-winner-list">导出名单</div>
           <div class="item" id="close-winner-table">关闭</div>
@@ -249,11 +253,6 @@
         : [];
     </script>
     <script>
-      // 幸运单抽
-      const luckySingle = document.querySelector("#lucky-single");
-      luckySingle.addEventListener("click", () => {
-        window.open('/single.html');
-      });
       // 查看中奖名单
       const viewWinners = document.querySelector('#view-winners');
       viewWinners.addEventListener('click', () => {
@@ -358,8 +357,9 @@
                 <div class="winner-card__info__ind">${winner["ind"]}</div>
                 <div class="winner-card__info__wkno">${winner["班级"]}</div>
               </div>
-              <div class="winner-card__info__username">${winner["姓名"]}</div>
-              <div class="winner-card__info__emailprefix">${winner["节目名"]}</div>
+              <div class="winner-card__info__username">《${winner["节目名"].split("《")[1]}</div>
+              <div class="winner-card__info__type">${winner["节目名"].split("《")[0]}</div>
+              <div class="winner-card__info__emailprefix">${winner["姓名"]}</div>
             </div>`;
           winnerListFragment.appendChild(winnerCard);
         });
@@ -479,8 +479,8 @@
         () => {
           const wb = XLSX.utils.book_new();
           const ws = XLSX.utils.json_to_sheet(WINNERS_LIST);
-          XLSX.utils.book_append_sheet(wb, ws, "2025年节目名单");
-          XLSX.writeFile(wb, `2025年节目名单_${(new Date()).toLocaleDateString().replaceAll('/', '-')}.xlsx`);
+          XLSX.utils.book_append_sheet(wb, ws, "2025年篝火晚会节目名单");
+          XLSX.writeFile(wb, `2025年篝火晚会节目名单_${(new Date()).toLocaleDateString().replaceAll('/', '-')}.xlsx`);
         },
         false
       );
@@ -767,7 +767,7 @@
           const symbol = document.createElement("div");
           // 节目名称
           symbol.className = "username";
-          symbol.textContent = LOTTERY_DATA.users[i + 3];
+          symbol.textContent = LOTTERY_DATA.users[i + 3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "");
           element.appendChild(symbol);
 
           const detail = document.createElement("div");
@@ -1047,7 +1047,7 @@
             ];
             const element = objects[ind].element;
             // 更新element的内容，这里也要根据对应的位置来
-            element.querySelector(".username").textContent = userData[3];
+            element.querySelector(".username").textContent = userData[3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "");
             element.querySelector(".emailprefix").textContent = userData[0];
             element.querySelector(".wkno").textContent = userData[1];
             // element.querySelector(".performance").textContent = userData[3];
