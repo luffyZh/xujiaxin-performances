@@ -801,7 +801,7 @@
           const symbol = document.createElement("div");
           // 节目名称
           symbol.className = "username";
-          symbol.textContent = LOTTERY_DATA.users[i + 3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "");
+          symbol.textContent = LOTTERY_DATA.users[i + 3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "").replace("合唱", "");
           element.appendChild(symbol);
 
           const detail = document.createElement("div");
@@ -1087,7 +1087,7 @@
             ];
             const element = objects[ind].element;
             // 更新element的内容，这里也要根据对应的位置来
-            element.querySelector(".username").textContent = userData[3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "");
+            element.querySelector(".username").textContent = userData[3].replace("歌曲", "").replace("舞蹈", "").replace("小品", "").replace("合唱", "");
             element.querySelector(".emailprefix").textContent = userData[0];
             element.querySelector(".wkno").textContent = userData[1];
             // element.querySelector(".performance").textContent = userData[3];
