@@ -536,7 +536,7 @@
         // 必须根据真实的用户来生成，这样才能保证公正，把缓存里的中奖者名单全部筛选出去
         const realUsers = LOTTERY_DATA.realUsers.filter(
           (user) =>
-            !WINNERS_LIST.find((winner) => winner["节目名"] === user["节目名"])
+            !WINNERS_LIST.find((winner) => winner["节目名"] === user["节目名"] && winner["姓名"] === user["姓名"])
         );
         // 从抽奖轮次中获取需要几个人
         const prizeInfo = PRIZES_LIST.find(

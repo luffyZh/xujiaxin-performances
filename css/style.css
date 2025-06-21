@@ -312,6 +312,24 @@ canvas {
   box-shadow: 0 0 12px rgba(253, 105, 0, 1);
 }
 
+.winner-card.stage-7 {
+  width: 200px;
+  height: 260px;
+  margin: 0 8px;
+  font-size: 1.8rem;
+  background-color: rgba(100, 149, 237, 1) !important;
+  box-shadow: 0 0 12px rgba(100, 149, 237, 1);
+}
+
+.winner-card.stage-8 {
+  width: 200px;
+  height: 260px;
+  margin: 0 10px;
+  background-color: rgba(46, 139, 87, 1) !important;
+  box-shadow: 0 0 12px rgba(46, 139, 87, 1);
+}
+
+
 .winner-card.single {
   background-color: rgba(253, 105, 0, 1) !important;
   box-shadow: 0 0 12px rgba(253, 105, 0, 1);
